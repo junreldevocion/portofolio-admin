@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import { isLoggedIn } from "../util/auth";
 import redirectTo from '../util/redirectTo';
 
@@ -13,7 +14,7 @@ export default function withAuth(Component) {
             redirectTo('/login', context);
         }
 
-        return {user: {isLoggedIn: isUserLoggIn}};
+        return {user: {isLoggedIn: isUserLoggIn, token: Cookies.get('token')} };
     }
 
     return AuthComponent;

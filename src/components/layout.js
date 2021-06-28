@@ -1,6 +1,16 @@
 import Head from 'next/head'
+import api from '../util/api'
+import { logOut } from '../util/auth';
 
-const Layout = ({title, children}) => {
+const Layout = ({title, token, children}) => {
+    const signOut = (e) => {
+        e.preventDefault();
+        api().post('api/logout', {}, { headers: {"Authorization" : `Bearer ${token}`} })
+        .then(response => {
+            logOut(token);
+        });
+    }
+
     return (
         <div>
             <Head>
@@ -16,7 +26,7 @@ const Layout = ({title, children}) => {
                 <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" />
                 <div className="navbar-nav">
                     <div className="nav-item text-nowrap">
-                    <a className="nav-link px-3" href="#">Sign out</a>
+                    <a className="nav-link px-3" href="#" onClick={signOut}>Sign out</a>
                     </div>
                 </div>
             </header>

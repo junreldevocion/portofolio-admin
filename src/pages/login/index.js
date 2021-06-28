@@ -17,6 +17,7 @@ const LoginPage = () => {
         e.preventDefault();
         api().get('/sanctum/csrf-cookie').then(() => {
             api().post('api/login', formInput).then(response => {
+                console.log(response);
                 logIn(response.data.token);
             });
         });

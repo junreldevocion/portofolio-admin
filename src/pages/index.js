@@ -4,9 +4,10 @@ import SideBar from '../components/sideBar'
 import Layout from '../components/layout'
 import Table from '../components/table'
 
-const Home = () => {
+const Home = ({user}) => {
+  console.log(user);
   return (
-    <Layout title="Dashboard">
+    <Layout title="Dashboard" token={user.token} >
       <div className="row">
       <SideBar />
       <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
