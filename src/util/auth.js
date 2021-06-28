@@ -5,11 +5,17 @@ import cookie from 'cookie'
 export const isLoggedIn = (reqCookies = null) => {
     // if we don't have request cookies, get the cookie from client
     if (! reqCookies) {
-        return !! Cookies.get('is_user_logged_in')
+
+        return {
+            isLoggedIn: !! Cookies.get('is_user_logged_in'),
+            token: Cookies.get('token')
+        };
     }
 
-    // otherwise get cookie from server
-    return !! cookie.parse(reqCookies).is_user_logged_in
+    return {
+        isLoggedIn: !! cookie.parse(reqCookies).is_user_logged_in,
+        token: cookie.parse(reqCookies).token
+    };
 }
 
 export const logIn = (token) => {

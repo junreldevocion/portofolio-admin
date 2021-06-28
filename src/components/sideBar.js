@@ -1,3 +1,4 @@
+import ActiveLink from './activeLink';
 
 const sideBar = () => {
     return (
@@ -5,16 +6,16 @@ const sideBar = () => {
     <div className="position-sticky pt-3">
       <ul className="nav flex-column">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">
-            <span data-feather="home"></span>
-            Dashboard
-          </a>
+			<ActiveLink href="/">
+			<span data-feather="home"></span>
+				Dashboard
+			</ActiveLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
-            <span data-feather="file"></span>
-            Orders
-          </a>
+			<ActiveLink href="/landing">
+				<span data-feather="file"></span>
+				Landing
+			</ActiveLink>
         </li>
       </ul>
     </div>

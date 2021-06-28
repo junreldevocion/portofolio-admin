@@ -8,9 +8,8 @@ export default function api() {
     });
 
     api.interceptors.response.use(response => response, error => {
-        console.log(response);
         if (error.response.status === 401) {
-            // logOut()
+            logOut()
             
             return Promise.reject()
         }

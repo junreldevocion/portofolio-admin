@@ -9,7 +9,7 @@ export default function noAuth(Component) {
     NoAuthComponent.getInitialProps = (context) => {
         const isUserLoggIn = isLoggedIn(context?.req?.headers.cookie || '')
 
-        if ( isUserLoggIn ) {
+        if ( isUserLoggIn.isLoggedIn ) {
             redirectTo('/', context);
         }
 
